@@ -384,6 +384,11 @@ public class NanoHTTPD
 				String method = pre.getProperty("method");
 				String uri = pre.getProperty("uri");
 
+				if (method == null) {
+					sendError( HTTP_BADREQUEST, "BAD REQUEST: Syntax error. Usage: GET /example/file.html" );
+					return;
+				}
+
 				long size = 0x7FFFFFFFFFFFFFFFl;
 				String contentLength = header.getProperty("content-length");
 				if (contentLength != null)
