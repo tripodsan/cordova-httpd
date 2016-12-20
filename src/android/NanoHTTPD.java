@@ -384,11 +384,6 @@ public class NanoHTTPD
 				String method = pre.getProperty("method");
 				String uri = pre.getProperty("uri");
 
-				if (method == null) {
-					sendError( HTTP_BADREQUEST, "BAD REQUEST: Syntax error. Usage: GET /example/file.html" );
-					return;
-				}
-
 				long size = 0x7FFFFFFFFFFFFFFFl;
 				String contentLength = header.getProperty("content-length");
 				if (contentLength != null)
@@ -508,7 +503,8 @@ public class NanoHTTPD
 			try {
 				// Read the request line
 				String inLine = in.readLine();
-				if (inLine == null) return;
+				if (inLine == null)
+					sendError( HTTP_BADREQUEST, "BAD REQUEST: Syntax error. Usage: GET /example/file.html" );
 				StringTokenizer st = new StringTokenizer( inLine );
 				if ( !st.hasMoreTokens())
 					sendError( HTTP_BADREQUEST, "BAD REQUEST: Syntax error. Usage: GET /example/file.html" );
