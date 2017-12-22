@@ -202,7 +202,7 @@ public class CorHttpd extends CordovaPlugin {
      * @param multitasking		Flag indicating if multitasking is turned on for app
      */
     public void onPause(boolean multitasking) {
-    	//if(! multitasking) __stopServer();
+    	if(! multitasking) __stopServer();
     }
 
     /**
@@ -211,7 +211,7 @@ public class CorHttpd extends CordovaPlugin {
      * @param multitasking		Flag indicating if multitasking is turned on for app
      */
     public void onResume(boolean multitasking) {
-    	//if(! multitasking) __startServer();
+    	if(! multitasking) __startServer();
     }
 
     /**
