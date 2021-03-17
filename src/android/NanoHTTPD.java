@@ -922,7 +922,7 @@ public class NanoHTTPD
 		AndroidFile f = new AndroidFile( homeDir, uri );
 		if ( res == null && !f.exists())
 			res = new Response( HTTP_NOTFOUND, MIME_PLAINTEXT,
-					"Error 404, file not found." );
+					"Error 404, file not found. " + uri );
 
 		// List the directory, if necessary
 		if ( res == null && f.isDirectory())
